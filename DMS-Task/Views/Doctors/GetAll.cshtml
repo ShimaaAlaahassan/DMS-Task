@@ -1,0 +1,44 @@
+﻿@model List<Doctor>
+
+<div class="container p-3">
+    <div class="row pt-4">
+        <div class="col-6">
+            <h1 class="text-primary">Doctors list</h1>
+        </div>
+
+    </div>
+    <br /> <br />
+    <table class="table table-bordered table-striped" style="width:100%">
+        <thead>
+            <tr>
+                <th>Full_Name</th>
+                <th>Specialize</th>
+               
+                <th>Email</th>
+                <th>password</th>
+                <th>phone Number</th>
+                <th>See Detailes</th>
+                
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var obj in Model)
+            {
+                <tr>
+                   
+                    <td width="50%">@obj.name</td>
+                    <td width="50%">@obj.Specialize</td>
+                    <td width="50%">@obj.Email</td>
+                    <td width="50%">@obj.Password</td>
+                    <td width="50%">@obj.PhoneNumber</td>
+                   
+                    <td class="m-75 ">
+                        <a asp-controller="Doctors" asp-action="Details" asp-route-id="@obj.Id" class="btn btn-primary mx-2"><i class="bi bi-pencil-square"></i>Details</a>
+                    </td>
+               
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

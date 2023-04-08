@@ -1,0 +1,57 @@
+﻿@using DMS_Task.Data.VewModel;
+@model AppointmentViewModel
+
+<h2>New Appointment</h2>
+
+<form asp-action="Create">
+    <div asp-validation-summary="All"></div>
+    <div class="mb-3">
+        <label for="PatientFName">First Name</label>
+        
+        <input type="text" class="form-control" id="PatientFName" name="PatientFName" value="@Model.PatientFName"/>
+        <span asp-validation-for="PatientFName" class="text-danger"></span>
+    </div>
+   
+    <div class="mb-3">
+        <label for="PatientLName">Last Name</label>
+        <input type="text" class="form-control" id="PatientLName" name="PatientLName" value="@Model.PatientLName">
+        <span asp-validation-for="PatientLName" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label for="patientBirthDate">Patient Birth Date</label>
+        <input type="date" class="form-control" id="patientBirthDate" name="PatientBirthDate" value="@Model.PatientBirthDate.ToString("yyyy-MM-dd")">
+        
+    </div>
+    <div class="mb-3">
+        <label for="doctorId">Doctor</label>
+        @Html.DropDownListFor(model => model.DoctorId, (IEnumerable<SelectListItem>)ViewBag.DoctorList, "Select a doctor", new { @class = "form-control" })
+      
+    </div>
+    <div class="mb-3">
+        <label for="appointmentDate">Appointment Date</label>
+        <input type="date" class="form-control" id="appointmentDate" name="AppointmentDate" value="@Model.AppointmentDate.ToString("yyyy-MM-dd")">
+        <span asp-validation-for="AppointmentDate"></span>
+    </div>
+   
+    <div class="mb-3">
+        <label for="StartTime">StartTime</label>
+        @Html.DropDownListFor(model => model.StartTime, (SelectList)ViewBag.SlotTime, "Select a Time", new { @class = "form-control" })
+        
+      
+        <span asp-validation-for="StartTime" class="text-danger"></span>
+    </div>
+   
+    <div class="mb-3">
+        <label for="visitLength">Visit Length (minutes)</label>
+        <input type="number" class="form-control" id="visitLength" disabled name="VisitLength" min="1" max="120" value="@Model.VisitLength">
+    </div>
+    <button type="submit" class="btn btn-warning $orange-500">Save</button>
+</form>
+@section Scripts{
+    @{
+        <partial name="_ValidationScriptsPartial"></partial>
+    }
+}
+
+
+

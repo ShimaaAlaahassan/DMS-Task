@@ -1,0 +1,22 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="row container">
+        <div class="col-sm-12 col-lg-12 p-4 ">
+          
+        @*<div class="bg-image p-5 shadow-1-strong rounded mb-5 text-white rounded mx-auto d-block"
+             style="background-image: url('~/image/background.jpg');">
+           </div>*@
+        <img src="~/image/background.jpg" width="1000" height="500" style="display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;" />
+
+        </div>
+ </div>
+
+<div class="d-grid gap-2 col-6 mx-auto">
+    <a asp-controller="Secretary" asp-action="Create" class="btn btn-warning $orange-500" mx-2><i class="bi bi-pencil-square"></i>Secretary</a>
+    <a asp-controller="Doctors" asp-action="GetAll" class="btn btn-warning $orange-500" mx-2 ><i class="bi bi-pencil-square"></i>Doctors</a>
+</div>

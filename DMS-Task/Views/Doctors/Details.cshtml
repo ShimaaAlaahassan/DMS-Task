@@ -1,0 +1,56 @@
+﻿@using DMS_Task.Data.ViewModel;
+@model DoctorViewModel
+
+<h1>Welcome, @Model.Doctor.name</h1>
+
+<h2>Your Appointments for Today</h2>
+
+
+<form asp-controller="Doctors" asp-action="Details" method="get>
+    <div class="row">
+        <div class="col">
+            <label for="startDate">Start Date:</label>
+            <input type="date" id="startDate" name="startDate" class="form-control" placeholder="startDate" aria-label="startDate">
+        </div>
+        <div class="col">
+            <label for="EndDate">End Date:</label>
+            <input type="date" id="EndDate" name="EndDate" class="form-control" placeholder="EndDate" aria-label="EndDate">
+        </div>
+        <div class="col-12">
+            <button class="btn btn-warning $orange-500"  type="submit">Search</button>
+        </div>
+    
+    </div>
+</form>
+
+@if (Model.PatientAppointments.Any())
+{
+  
+    <table class="table caption-top">
+    <thead>
+        <tr>
+                <th >Date</th>
+                <th >Start time</th>
+                <th >Patient Name</th>
+
+        </tr>
+        
+    </thead>
+    <tbody>
+        @foreach (var appointment in Model.PatientAppointments)
+        {
+            <tr scope="row">
+                <td>@appointment.AppointmentDate</td>
+                <td>@appointment.StartTime</td>
+                <td>@(appointment.FName + " " + appointment.LName)</td>
+            </tr>
+        }
+    </tbody>
+</table>
+}
+else
+{
+    <p>You have no appointments scheduled for today.</p>
+}
+
+
